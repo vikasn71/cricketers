@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fullname: MyString
+  country: MyString
+  description: MyText
+  posted_from: MyString
+
+two:
+  fullname: MyString
+  country: MyString
+  description: MyText
+  posted_from: MyString

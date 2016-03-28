@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fullname:</strong>
+  <%= @cricketer.fullname %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @cricketer.country %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @cricketer.description %>
+</p>
+
+<p>
+  <strong>Posted from:</strong>
+  <%= @cricketer.posted_from %>
+</p>
+
+<%= link_to 'Edit', edit_cricketer_path(@cricketer) %> |
+<%= link_to 'Back', cricketers_path %>

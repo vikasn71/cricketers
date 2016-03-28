@@ -1,0 +1,68 @@
+author  book  publisher
+
+
+class Publisher < ActiveRecord::Base
+  has_many :books
+end
+
+class Book < ActiveRecord::Base
+  has_many :authors
+  belongs_to :publisher
+end
+
+class Author < ActiveRecord::Base
+  has_many :books
+end
+
+
+Students  University  State
+
+class Student < ActiveRecord::Base
+  belongs_to :university
+  belongs_to :state, :through => :university
+end
+
+class Uniersity < ActiveRecord::Base
+  belongs_to :state
+  has_many :students
+end
+
+class State < ActiveRecord::Base
+  has_many :universities
+end
+
+
+Countries  States  Persons
+
+class Country < ActiveRecord::Base
+  has_many :states
+  has_many :persons, :through => :state
+end
+
+class State < ActiveRecord::Base
+  belongs_to :country
+  has_many :persons
+end
+
+class Person < ActiveRecord::Base
+  belongs_to :state
+  belongs_to :country, :through => :state
+end
+
+
+FaceBook   User  Account
+
+class User < ActiveRecord::Base
+  belongs_to :FaceBook
+  has_many :accounts
+end
+
+class FaceBook < ActiveRecord::Base
+  has_many :users
+  has_many :accounts
+end
+
+class Account < ActiveRecord::Base
+  belongs_to :user
+  belongs_to :FaceBook
+end

@@ -1,0 +1,31 @@
+<h1>Listing cricketers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fullname</th>
+      <th>Country</th>
+      <th>Description</th>
+      <th>Posted from</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cricketers.each do |cricketer| %>
+      <tr>
+        <td><%= cricketer.fullname %></td>
+        <td><%= cricketer.country %></td>
+        <td><%= cricketer.description %></td>
+        <td><%= cricketer.posted_from %></td>
+        <td><%= link_to 'Show', cricketer %></td>
+        <td><%= link_to 'Edit', edit_cricketer_path(cricketer) %></td>
+        <td><%= link_to 'Destroy', cricketer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cricketer', new_cricketer_path %>

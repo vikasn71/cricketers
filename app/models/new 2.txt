@@ -1,0 +1,51 @@
+
+Database schema:
+
+Doctors - id, Name, Address, City, State, Zip, School, Experience
+
+Pet - id, Name, Type, Breed, Age, Weight, Lastvisit, Customer_id(FK)
+
+Customer - id, Name, Petname, Date_of_next_appointment, Reason
+
+Appointment - id, Date, pet_id, customer_id, Remainder, Reason, doctor_id
+
+
+
+Associations:
+
+A doctor can have many pets and customers through appointment.
+
+class Doctor < ActiveRecord::Base
+  has_many :pets, :through => :appointment
+  has_many :customers, :through => :appointment
+  has_many :appointments
+end			
+
+class Pet < ActiveRecord::Base
+  belongs_to :customer
+  has_many :doctors, :through => :appointment
+  has_many :appointments
+end
+		
+class Customer 
+  has_many :pets
+  has_many :doctors, :through => :appointment
+  has_many :appointments
+end
+
+class Appointment <ActiveRecord::Base
+  belongs_to :customer
+  belongs_to :pet
+  belongs_to :doctor
+end		
+	  
+Explanation:
+
+A Doctor can treat many pets and a pet can go to multiple doctors for treatment - many to many
+A Doctors have many customers and a customer go to multiple doctors - many to many
+A pet belongs to only one customer - one to one
+A customer can have many pets - one to many
+A Doctor will have many appointments - one to many
+A pet can also have many appointments - one to many
+A customer can take many appointments -one to many
+Appointment belongs to single doctor, single pet and single customer - one to one
